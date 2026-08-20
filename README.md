@@ -1,10 +1,10 @@
-# $d^2$opt-ARIA: A New Proposal for Discrete Optimization
+# d²opt-ARIA: A New Proposal for Discrete Optimization
 
-This repository contains the source code, hyperparameters, and experimental materials associated with the research and development of **$d^2$opt-ARIA**, a novel optimization algorithm for discrete optimization problems.
+This repository contains the source code, hyperparameters, and experimental materials associated with the research and development of **d²opt-ARIA**, a novel optimization algorithm for discrete optimization problems.
 
 ## Overview
 
-The $d^2$opt-ARIA algorithm was developed as part of doctoral research in optimization, with emphasis on the design and evaluation of metaheuristic approaches for complex search spaces.
+The d²opt-ARIA algorithm was developed as part of doctoral research in optimization, with emphasis on the design and evaluation of metaheuristic approaches for complex search spaces.
 
 The repository provides the computational materials used to investigate the behavior and performance of the proposed algorithm under different optimization scenarios.
 
