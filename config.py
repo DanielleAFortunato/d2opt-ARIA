@@ -12,22 +12,22 @@ ORIGEM = 3     # ID do operador (AOS)
 """
 Configurações Gerais e Experimento
 """
-execucoes = 10         # Número de rodadas para média e desvio padrão
-MAX_NFE = 30000        # Esforço computacional total (Critério de Parada)
+execucoes = 10        # Número de rodadas para média e desvio padrão
+MAX_NFE = 150000        # Esforço computacional total (Critério de Parada)
 ndim = 150               # Será atualizado automaticamente pelo tsp_problem.py
 verbose = 1
 
 funcao = tsp_problem.tsp_fitness  # Define a função de fitness global
 
 # PARA INSERIR DINAMICIDADE
-NFE_INTERVALO_DINAMICO = 8000  # O ambiente muda a cada xxx avaliações
+NFE_INTERVALO_DINAMICO = 999999999999  # O ambiente muda a cada xxx avaliações
 
 """
-Hiperparâmetros da Rede Imune 
+Hiperparâmetros da Rede Imune (dopt-ARIA e dopt-aiNet)
 """
 celulas = 10            # População inicial (Crescimento dinâmico)
 tamanho_maximo = 100    # Teto populacional para ambos
-nclones = 3             # Pressão de clonagem moderada 
+nclones = 3           # Pressão de clonagem moderada [cite: 52, 63]
 beta = 5.0              # Fator de decaimento da mutação
 d = 0.05                # Taxa de inserção de novas células (Diversidade)
 PCT_EXPLOTACAO = 0.80   # 80% melhores usam AOS / 20% piores usam exploração forte
@@ -37,6 +37,9 @@ CHANCE_2OPT_MEMETICO = 0.5
 # Controle do AOS (Adaptive Operator Selection)
 AOS_P_MIN = 0.1         # Probabilidade mínima para evitar descarte de operadores
 
+# Parâmetros para o dopt-aiNet (Ablation Study)
+# Usado para provar que o raio fixo é inferior ao adaptativo
+SIGMA_SUP_FIXO = 0.1    
 
 """
 Hiperparâmetros Ajustados dos Baselines (Para comparação justa)
@@ -44,7 +47,7 @@ Hiperparâmetros Ajustados dos Baselines (Para comparação justa)
 # Genetic Algorithm (GA)
 GA_POP_SIZE = 50        # Reduzido para permitir mais gerações dentro do NFE
 GA_MUTATION_RATE = 0.08 # 8% é um equilíbrio entre busca e estabilidade
-GA_ELITE_SIZE = 2       # Preservação das melhores soluções 
+GA_ELITE_SIZE = 2       # Preservação das melhores soluções [cite: 7, 37]
 
 # Ant Colony Optimization (ACO)
 ACO_ANTS = 30           # Equilíbrio entre exploração e custo por geração
@@ -59,14 +62,18 @@ CLO_BETA_CLONE = 10     # Aumentado para 10 para maior pressão de refino
 """
 Parâmetros Dinâmicos (DTSP)
 """
-INTERVALO_DINAMICO = 8000 # (se aplicável)
-INTENSIDADE_TRANSITO = 20
-NUM_BLOQUEIOS = 25
+INTERVALO_DINAMICO = 999999999999 # Choque a cada 500 gerações (se aplicável)
+INTENSIDADE_TRANSITO = 1 #20
+NUM_BLOQUEIOS = 1 #25
 
 """
 Parâmetros de Plotagem e Logs
 """
+# NOME_ARQUIVO_PROBLEMA = "pr76.tsp"
+# No seu config.py
+# No config.py
 NOME_ARQUIVO_PROBLEMA = "pr76.tsp"  # Mantenha para compatibilidade
+# No config.py
 INSTANCIAS_PARA_TESTAR = [
     "instance/att48.tsp",    # Mude de 'Instances/' para 'instance/'
     "instance/eil51.tsp",
